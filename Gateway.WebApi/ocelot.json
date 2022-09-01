@@ -1,0 +1,57 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/product", //Microservice'deki asil endpointi belirtir
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost", //location(yer) of microservice
+          "Port": 44390
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway", //upstreamler client'in request yolu
+      "UpstreamHttpMethod": [ "GET", "POST" ] //requestler
+    },
+    {
+      "DownstreamPathTemplate": "/product/{id}", 
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44390
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/{id}", 
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ] 
+    },
+
+    //Customer
+
+    {
+      "DownstreamPathTemplate": "/customer", 
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44396
+        }
+      ],
+      "UpstreamPathTemplate": "/getroute",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/customer/{id}", 
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost", 
+          "Port": 44396
+        }
+      ],
+      "UpstreamPathTemplate": "/getroute/{id}", 
+      "UpstreamHttpMethod": [ "GET", "DELETE", "PUT" ] 
+    }
+
+  ]
+
+}
